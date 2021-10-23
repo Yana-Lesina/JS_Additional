@@ -1,6 +1,6 @@
 'use strict'
 
-const today = new Date()
+let today
 let weekOutput = document.getElementById('week')
 let week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'] 
 let months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'] 
@@ -58,10 +58,9 @@ const convertDate2 = function(d) {
         + [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('.') + '<br>'
 }
 
-weekOutput.innerHTML = convertDate1(today) 
-weekOutput.innerHTML += convertDate2(today)
 
 setInterval(function() { 
-  location.reload() 
+  today = new Date()
+  weekOutput.innerHTML = convertDate1(today) 
+  weekOutput.innerHTML += convertDate2(today)
 }, 1000)
-
