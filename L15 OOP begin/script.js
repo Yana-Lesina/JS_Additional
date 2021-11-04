@@ -31,9 +31,10 @@ DomElement.prototype.createElemOnPage = function(elemType) {
   return newElem;
 };
 
-const elem = new DomElement('#block', '200px', '400px', '#f2d335', '35px');
+const elem = new DomElement('#block', '250px', '450px', '#f2d335', '35px');
 const newEl = elem.createElemOnPage('div');
 
 document.body.append(newEl);
 newEl.textContent = 'Этот прямоугольник появился здесь чтобы пожелать здоровья:)';
 newEl.style.textAlign = 'center';
+newEl.innerHTML += '<br><img src="vzhuh.png" height = "90px" width = "90px">';
