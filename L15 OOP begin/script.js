@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const DomElement = function(selector, height, width, bg, fontSize) {
   this.selector = selector;
@@ -11,10 +11,12 @@ const DomElement = function(selector, height, width, bg, fontSize) {
 DomElement.prototype.createElemOnPage = function(elemType) {
   const newElem = document.createElement(elemType);
 
+  console.log(this.selector[0]);
+
   if(this.selector[0] === '.') {
     newElem.classList.add(this.selector);
 
-  } else if (this.selector === '#') {
+  } else if (this.selector[0] === '#') {
     newElem.setAttribute('id', this.selector);
 
   } else {
@@ -22,19 +24,24 @@ DomElement.prototype.createElemOnPage = function(elemType) {
     document.body.innerText = "Не удалось создать элемент"; //!!!!!!
   }
 
-  newElem.style.cssText = 'height:' + this.height + ';' +
-                          'width:' + this.width + ';' +
-                          'background-color:' + this.bg + ';' +
-                          'font-size:' + this.fontSize + ';' + 
-                          'margin: auto';
+  newElem.style.cssText = `height: ${this.height};
+                           width: ${this.width};
+                           background-color: ${this.bg};
+                           font-size: ${this.fontSize}; 
+                           margin: auto;`;
   
   return newElem;
 };
 
-const elem = new DomElement('#block', '250px', '450px', '#f2d335', '35px');
-const newEl = elem.createElemOnPage('div');
+const elem1 = new DomElement('#block', '250px', '450px', '#f2d335', '35px');
+const elem2 = new DomElement('.block', '250px', '450px', '#f2d335', '35px');
+const newEl1 = elem1.createElemOnPage('div');
+const newEl2 = elem2.createElemOnPage('div');
 
-document.body.append(newEl);
-newEl.textContent = 'Этот прямоугольник появился здесь чтобы пожелать здоровья:)';
-newEl.style.textAlign = 'center';
-newEl.innerHTML += '<br><img src="vzhuh.png" height = "90px" width = "90px">';
+console.log(newEl1);
+console.log(newEl2);
+
+document.body.append(newEl1);
+newEl1.textContent = 'Этот прямоугольник появился здесь чтобы пожелать здоровья:)';
+newEl1.style.textAlign = 'center';
+newEl1.innerHTML += '<br><img src="vzhuh.png" height = "90px" width = "90px">';
