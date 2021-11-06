@@ -11,17 +11,14 @@ const DomElement = function(selector, height, width, bg, fontSize) {
 DomElement.prototype.createElemOnPage = function(elemType) {
   const newElem = document.createElement(elemType);
 
-  console.log(this.selector[0]);
-
   if(this.selector[0] === '.') {
-    newElem.classList.add(this.selector);
+    newElem.classList.add(this.selector.slice(1));
 
   } else if (this.selector[0] === '#') {
-    newElem.setAttribute('id', this.selector);
+    newElem.setAttribute('id', this.selector.slice(1));
 
   } else {
-    console.log('why...');
-    document.body.innerText = "Не удалось создать элемент"; //!!!!!!
+    document.body.innerText = "Не удалось создать элемент";
   }
 
   newElem.style.cssText = `height: ${this.height};
@@ -38,8 +35,8 @@ const elem2 = new DomElement('.block', '250px', '450px', '#f2d335', '35px');
 const newEl1 = elem1.createElemOnPage('div');
 const newEl2 = elem2.createElemOnPage('div');
 
-console.log(newEl1);
-console.log(newEl2);
+console.log(newEl1)
+console.log(newEl2)
 
 document.body.append(newEl1);
 newEl1.textContent = 'Этот прямоугольник появился здесь чтобы пожелать здоровья:)';
