@@ -27,7 +27,6 @@ DomElement.prototype.createHtmlElem = function(elemType) {
                            background-color: ${this.bg};
                            font-size: ${this.fontSize};
                            position: ${this.position}`;
-  
   return newElem;
 };
 
@@ -38,10 +37,8 @@ let newEl1 = elem1.createHtmlElem('div');
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOMContentLoaded");
 
-  //newEl1 = elem1.createElemOnPage('div');
   document.body.append(newEl1);
   newEl1.textContent = 'ヽ(￣～￣　)ノ';
-  console.log(newEl1);
 
   document.addEventListener('keydown', move);
 
@@ -51,14 +48,10 @@ const move = function(e) {
   console.log(e.code);
   switch (e.code) {
     case 'ArrowUp':
-      //console.log(`top: ${newEl1.style.top} bottom: ${newEl1.style.bottom}`);
       newEl1.style.top = (parseInt(newEl1.style.top) || 0) - 10 + 'px'
-
       break;
     case 'ArrowDown':
-      //console.log(`top: ${newEl1.style.top} bottom: ${newEl1.style.bottom}`);
       newEl1.style.top = (parseInt(newEl1.style.top) || 0) + 10 + 'px'
-
       break;
     case 'ArrowLeft':
       newEl1.style.left = (parseInt(newEl1.style.left) || 0) - 10 + 'px'
